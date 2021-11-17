@@ -1,0 +1,28 @@
+import numpy as np 
+import pylab 
+import random 
+n = 1000 #n is the number of steps. Increases in the value of n also increases the compelxity of graph) 
+
+x = np.zeros(n) # Given a 2D form, x and y are arrays that store the coordinates of the position 
+y = np.zeros(n) 
+
+direction=["North","South","East","West"] # General four directions of possible moves around the grid.
+
+for i in range(1, n): 
+    step = random.choice(direction) #Randomly choosing the direction of movement. 
+    if step == "East": #updating the direction with respect to the direction of motion choosen.
+        x[i] = x[i - 1] + 1
+        y[i] = y[i - 1] 
+    elif step == "West": 
+        x[i] = x[i - 1] - 1
+        y[i] = y[i - 1] 
+    elif step == "North": 
+        x[i] = x[i - 1] 
+        y[i] = y[i - 1] + 1
+    else: 
+        x[i] = x[i - 1] 
+        y[i] = y[i - 1] - 1
+        
+        pylab.title("Random Walk: 2D Representation of 1000 Randomized Steps")
+pylab.plot(x, y) #plotting the walk.
+pylab.show()
